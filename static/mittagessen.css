@@ -1,0 +1,25 @@
+body {
+	position:relative;
+	padding:101px 0 0 0;	
+	height:100%;
+}
+
+main {
+	text-align:center;
+	padding: 0 15px;
+	margin-bottom:100px;
+}
+
+
+#schlachthof-menu {
+	width:100%;
+	max-width:1000px;
+}
+
+#werkbank-menu-img {
+	margin-top:30px;
+	width:100%;
+	max-width:600px;
+}
+
+

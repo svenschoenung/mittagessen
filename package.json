@@ -1,0 +1,17 @@
+{
+  "name": "mittagessen",
+  "description": "One page display of lunch options",
+  "version": "0.0.1",
+  "author": "Sven Schoenung",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/svenschoenung/mittagessen.git"
+  },
+  "dependencies": {
+    "fbgraph": "1.0.0",
+    "http-proxy": "1.11.1",
+    "finalhandler": "0.4.0",
+    "serve-static": "1.10.0"
+  },
+  "engine": "node >= 0.10.0"
+}
