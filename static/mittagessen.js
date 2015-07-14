@@ -42,7 +42,9 @@ function checkWerkbank() {
        menuDate.getDate()
      );
 
-     if (today.getTime() == menuDay.getTime()) {
+     if (today.getDay() == 2) {
+        $("#werkbank-menu-closed").show();
+     } else if (today.getTime() == menuDay.getTime()) {
 	var $menuImg = $("#werkbank-menu-img");
         $menuImg.attr("src", lastPhoto.images[0].source);
         $menuImg.show();
