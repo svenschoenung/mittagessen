@@ -1,20 +1,26 @@
-function showPdf(url, canvasId) {
+function showPdf(url, pages, containerId) {
+  var canvasContainer = document.getElementById(containerId);
   PDFJS.getDocument("/proxy/" + url).then(function(pdf) {
-    pdf.getPage(1).then(function(page) {
-      var scale = 1.5;
-      var viewport = page.getViewport(scale);
+    for (var i = 0; i < pages.length; i++) {
+      var page = pages[i];
+      pdf.getPage(page).then(function(page) {
+        var scale = 1.5;
+        var viewport = page.getViewport(scale);
 
-      var canvas = document.getElementById(canvasId);
-      var context = canvas.getContext('2d');
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
 
-      var renderContext = {
-        canvasContext: context,
-        viewport: viewport
-      };
-      page.render(renderContext);
-    });
+        var renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+
+	canvasContainer.appendChild(canvas);
+        page.render(renderContext);
+      });
+    }
   });
 }
 
@@ -53,7 +59,8 @@ function checkWerkbank() {
 
 $(document).ready(function() {
   showPdf(
-    "http://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf",
+    "http://www.imschlachthof.de/images/stories/wochenempfehlung.pdf",
+    [3, 4],
     "schlachthof-menu"
   );
 
