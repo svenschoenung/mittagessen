@@ -47,6 +47,12 @@ function checkWerkbank() {
         $menuDate.show();
 	$("#werkbank-menu-none").hide()
      } else {
+	var $menuImg = $("#werkbank-menu-img");
+        $menuImg.attr("src", lastPhoto.images[0].source);
+        $menuImg.show();
+        var $menuDate = $("#werkbank-menu-date");
+        $menuDate.text(lastPhoto.created_time);
+        $menuDate.show();
         $("#werkbank-menu-none").show();
 	setTimeout(checkWerkbank, 2 * 60 * 1000);
      }
