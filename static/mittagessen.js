@@ -55,7 +55,7 @@ function checkWerkbank() {
 
 $(document).ready(function() {
   showPdf(
-    "http://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf",
+    "http://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf?date=" + (new Date()).getTime(),
     "schlachthof-menu"
   );
 
