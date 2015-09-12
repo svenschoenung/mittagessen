@@ -18,8 +18,9 @@ function showPdf(url, canvasId) {
   });
 }
 
-function checkWerkbank() {
-  $.ajax("/facebook/827125074038443/photos?type=uploaded&limit=1")
+
+function checkFacebook(htmlId, fbId, closed, menuAvailable) {
+  $.ajax("/facebook/" + fbId + "/photos?type=uploaded&limit=1")
    .done(function(data) {
      var lastPhoto = JSON.parse(data).data[0];
      var now = new Date();
@@ -36,36 +37,62 @@ function checkWerkbank() {
        menuDate.getDate()
      );
 
-     if (today.getDay() == 2) {
-        $("#werkbank-menu-closed").show();
-     } else if (today.getTime() == menuDay.getTime()) {
-	var $menuImg = $("#werkbank-menu-img");
-        $menuImg.attr("src", lastPhoto.images[0].source);
-        $menuImg.show();
-        var $menuDate = $("#werkbank-menu-date");
-        $menuDate.text(lastPhoto.created_time);
-        $menuDate.show();
-	$("#werkbank-menu-none").hide()
-     } else {
-	var $menuImg = $("#werkbank-menu-img");
-        $menuImg.attr("src", lastPhoto.images[0].source);
-        $menuImg.show();
-        var $menuDate = $("#werkbank-menu-date");
-        $menuDate.text(lastPhoto.created_time);
-        $menuDate.show();
-        $("#werkbank-menu-none").show();
-	setTimeout(checkWerkbank, 2 * 60 * 1000);
+     if (closed && closed(today)) {
+        $(htmlId + "-menu-closed").show();
+        return;
      }
+
+     if (menuAvailable && menuAvailable(today, menuDay)) {
+	var $menuImg = $(htmlId + "-menu-img");
+        $menuImg.attr("src", lastPhoto.images[0].source);
+        $menuImg.show();
+        var $menuDate = $(htmlId + "-menu-date");
+        $menuDate.text(lastPhoto.created_time);
+        $menuDate.show();
+	$(htmlId + "-menu-none").hide()
+	return;
+     }
+
+	var $menuImg = $(htmlId + "-menu-img");
+        $menuImg.attr("src", lastPhoto.images[0].source);
+        $menuImg.show();
+        var $menuDate = $(htmlId + "-menu-date");
+        $menuDate.text(lastPhoto.created_time);
+        $menuDate.show();
+        $(htmlId + "-menu-none").show();
+	setTimeout(function() {
+	    checkFacebook(htmlId, fbId, closed, menuAvailable);
+	}, 2 * 60 * 1000);
    });
+
 }
 
 $(document).ready(function() {
+
+  // *** Restaurants ***
+
+  // Schlachthof
   showPdf(
     "http://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf?date=" + (new Date()).getTime(),
     "schlachthof-menu"
   );
 
-  checkWerkbank();
+  // Werkbank
+  checkFacebook("#werkbank", "827125074038443", function(today) {
+    return today.getDay() == 2;
+  }, function(today, menuDay) {
+    return today.getTime() == menuDay.getTime();
+  });
+
+  // Carl's Wirtshaus
+  checkFacebook("#carlswirtshaus", "1569441509939001", function(today) {
+    return false;
+  }, function(today, menuDay) {
+    return (today - menuDay) / (1000*60*60*24) < 6;
+  });
+
+
+  // *** Bootstrap ***
 
   var offsetHeight = 101;
 
