@@ -22,4 +22,13 @@ main {
 	max-width:600px;
 }
 
+#mtv-menu, #purino-menu {
+	margin: 0 auto;
+	width: 820px;
+	background: #eee;
+}
 
+#purino-menu { 
+	max-height:400px;
+	overflow:auto;
+}
