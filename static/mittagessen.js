@@ -112,6 +112,21 @@ $(document).ready(function() {
     return $menu;
   });
 
+  //Liebes Beef
+  proxy("#liebesbeef", "http://www.liebesbeef.de/standorte/karlsruhe/", function(data) {
+    var url = $(data).find("a[href$='.pdf']").attr('href');
+    if (url) {
+      pdf("#liebesbeef-pdf", url);
+    }
+    return '';
+  });
+
+  //Liebes Beef
+  proxy("#cafegold", "http://www.gold-ka.de/home/menu/essen/", function(data) {
+    var url = $(data).find('.tag-tageskarte a[href$=".jpg"]').attr('href');
+    return '<img id="cafegold-menu-img" src="' + url + '"/>';
+  });
+
 
 
   // *** Bootstrap ***

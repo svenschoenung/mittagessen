@@ -22,6 +22,12 @@ main {
 	max-width:600px;
 }
 
+#cafegold-menu-img  {
+	margin-top:30px;
+	width:100%;
+	max-width:800px;
+}
+
 #mtv-menu, #purino-menu {
 	margin: 0 auto;
 	width: 820px;
