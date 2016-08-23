@@ -127,7 +127,11 @@ $(document).ready(function() {
     return '<img id="cafegold-menu-img" src="' + url + '"/>';
   });
 
-
+  moment.locale('de');
+  var week = moment(new Date()).week();
+  pdf("#rintheimerstuben",
+      "http://www.tsv-rintheim.de/images/Wochenkarten/Wochenkarte_KW" + week + ".pdf?date=" +
+      (new Date()).getTime());
 
   // *** Bootstrap ***
 
