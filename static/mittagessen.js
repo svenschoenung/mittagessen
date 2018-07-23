@@ -80,15 +80,8 @@ $(document).ready(function() {
 
   // Schlachthof
   pdf("#schlachthof",
-      "http://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf?date=" +
+      "https://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf?date=" +
       (new Date()).getTime());
-
-  // Werkbank
-  facebook("#werkbank", "827125074038443", function(today) {
-    return today.getDay() == 2;
-  }, function(today, menuDay) {
-    return today.getTime() == menuDay.getTime();
-  });
 
   //Carl's Wirtshaus
   proxy("#carlswirtshaus", "http://www.carls-wirtshaus.de/getraenke-speisekarte/", function(data) {
@@ -97,6 +90,35 @@ $(document).ready(function() {
     return '';
   });
 
+  // Purino
+  proxy("#purino1", "https://www.purino.de/speisekarten/spezialmenues.html", function(data) {
+    var $menu = $(data).find(".mod_article.block");
+    $menu.find('img').detach();
+    return $menu;
+  });
+  proxy("#purino2", "https://www.purino.de/speisekarten/speisekarte/karlsruhe.html", function(data) {
+    var $menu = $(data).find(".mod_article.block");
+    $menu.find('img').detach();
+    return $menu;
+  });
+
+  //Cafe Gold
+  proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
+    var url1 = $(data).find('a:contains(Wochenkarte)').attr('href');
+    var url2 = $(data).find('a:contains(Mittagskarte)').attr('href');
+    pdf("#cafegold2", url2 + '?date=' + (new Date()).getTime());
+    return '<img id="cafegold1-menu-img" src="' + url1 + '"/>';
+  });
+
+
+
+/*
+  moment.locale('de');
+  var week = moment(new Date()).week();
+  pdf("#rintheimerstuben",
+      "http://www.tsv-rintheim.de/images/Wochenkarten/Wochenkarte_KW" + week + ".pdf?date=" +
+      (new Date()).getTime());
+
   // MTV
   proxy("#mtv", "http://www.xn--gaststtte-mtv-karlsruhe-07b.de/html/speisekarte.html", function(data) {
     var $menu = $(data).find("#LayoutBereich10LYR");
@@ -104,35 +126,7 @@ $(document).ready(function() {
     $menu.find('a').detach();
     return $menu;
   });
-
-  // Purino
-  proxy("#purino", "http://www.purino.de/speisekarten/speisekarte.html", function(data) {
-    var $menu = $(data).find(".mod_article.block");
-    $menu.find('img').detach();
-    return $menu;
-  });
-
-  //Liebes Beef
-  proxy("#liebesbeef", "http://www.liebesbeef.de/standorte/karlsruhe/", function(data) {
-    var url = $(data).find("a[href$='.pdf']").attr('href');
-    if (url) {
-      pdf("#liebesbeef-pdf", url);
-    }
-    return '';
-  });
-
-  //Liebes Beef
-  proxy("#cafegold", "http://www.gold-ka.de/home/menu/essen/", function(data) {
-    var url = $(data).find('.tag-tageskarte a[href$=".jpg"]').attr('href');
-    return '<img id="cafegold-menu-img" src="' + url + '"/>';
-  });
-
-  moment.locale('de');
-  var week = moment(new Date()).week();
-  pdf("#rintheimerstuben",
-      "http://www.tsv-rintheim.de/images/Wochenkarten/Wochenkarte_KW" + week + ".pdf?date=" +
-      (new Date()).getTime());
-
+*/
   // *** Bootstrap ***
 
   var offsetHeight = 101;

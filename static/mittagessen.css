@@ -11,6 +11,19 @@ main {
 }
 
 
+h1:first-child {
+	border-top:none;
+	margin-top:0px !important;
+	padding-top:0px !important;
+}
+
+h1 {
+	margin-top:30px !important;
+	padding-top:40px !important;
+	border-top:1px solid gray;
+}
+
+
 #schlachthof-menu {
 	width:100%;
 	max-width:1000px;
@@ -22,19 +35,25 @@ main {
 	max-width:600px;
 }
 
-#cafegold-menu-img  {
+#cafegold1-menu-img  {
 	margin-top:30px;
 	width:100%;
 	max-width:800px;
 }
 
-#mtv-menu, #purino-menu {
+#cafegold2-menu  {
+	width:100%;
+	max-width:1000px;
+}
+
+#mtv-menu, #purino1-menu, #purino2-menu {
 	margin: 0 auto;
-	width: 820px;
+	width: 1000px;
 	background: #eee;
 }
 
-#purino-menu { 
-	max-height:400px;
+#purino1-menu, #purino2-menu { 
+	max-height:600px;
+	margin-top:30px;
 	overflow:auto;
 }
