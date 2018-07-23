@@ -33,6 +33,7 @@
 <li><a href="#chiangmai">Chiang Mai</a></li>
 <li><a href="#purino">Purino</a></li>
 <li><a href="#cafegold">Cafe Gold</a></li>
+<li><a href="#oktave">Oktave</a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
@@ -97,6 +98,15 @@ proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
     height:1150
   });
   return '<img src="' + url1 + '"/>';
+});
+</script>
+
+<h1 id="oktave">Oktave</h1>
+<div id="oktave-menu"></div>
+<script>
+googlePdf("#oktave", "https://oktave-karlsruhe.de/wp-content/uploads/2017/11/Speisekarte_Oktave_klein.pdf", {
+  width:800,
+  height:1000
 });
 </script>
 
