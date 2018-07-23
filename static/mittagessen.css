@@ -23,27 +23,10 @@ h1 {
 	border-top:1px solid gray;
 }
 
-
-#schlachthof-menu {
-	width:100%;
-	max-width:1000px;
-}
-
-#werkbank-menu-img {
-	margin-top:30px;
-	width:100%;
-	max-width:600px;
-}
-
-#cafegold1-menu-img  {
+#cafegold1-menu img  {
 	margin-top:30px;
 	width:100%;
 	max-width:800px;
-}
-
-#cafegold2-menu  {
-	width:100%;
-	max-width:1000px;
 }
 
 #mtv-menu, #purino1-menu, #purino2-menu {
@@ -52,8 +35,12 @@ h1 {
 	background: #eee;
 }
 
+.purino a {
+	margin-top:20px;
+	display:inline-block;
+}
+
 #purino1-menu, #purino2-menu { 
 	max-height:600px;
-	margin-top:30px;
 	overflow:auto;
 }

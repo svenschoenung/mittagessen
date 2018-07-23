@@ -1,3 +1,4 @@
+/*
 function pdf(htmlId, url) {
   PDFJS.getDocument("/proxy/" + url).then(function(pdf) {
     pdf.getPage(1).then(function(page) {
@@ -17,7 +18,20 @@ function pdf(htmlId, url) {
     });
   });
 }
+*/
 
+function googlePdf(htmlId, url, options) {
+    var googleUrl = 'https://docs.google.com/gview?url=' + encodeURIComponent(url) + '&embedded=true';
+    var link = $('<a>Speisekarte</a>').attr('href', googleUrl).attr('target', '_blank');
+    var iframe = $('<iframe></iframe>')
+      .attr('src', googleUrl)
+      .attr('frameborder', '0')
+      .css('display', 'block')
+      .css('margin', '0 auto')
+      .css('width', options.width + 'px')
+      .css('height', options.height + 'px');
+    $(htmlId + '-menu').append(link).append(iframe);
+}
 
 function facebook(htmlId, fbId, closed, menuAvailable) {
   $.ajax("/facebook/" + fbId + "/photos?type=uploaded&limit=1")
@@ -70,7 +84,9 @@ function facebook(htmlId, fbId, closed, menuAvailable) {
 function proxy(htmlId, url, callback) {
   $.get("/proxy/" + url, function(data) {
     var html = callback(data);
-    $(htmlId + "-menu").append(html);
+    if (html) { 
+      $(htmlId + "-menu").append(html);
+    }
   });
 }
 
@@ -78,40 +94,8 @@ $(document).ready(function() {
 
   // *** Restaurants ***
 
-  // Schlachthof
-  pdf("#schlachthof",
-      "https://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf?date=" +
-      (new Date()).getTime());
-
-  //Carl's Wirtshaus
-  proxy("#carlswirtshaus", "http://www.carls-wirtshaus.de/getraenke-speisekarte/", function(data) {
-    var url = $(data).find("#mittagstischkarte div[data-link$='.pdf']").attr('data-link');
-    pdf("#carlswirtshaus-pdf", url);
-    return '';
-  });
-
   // Purino
-  proxy("#purino1", "https://www.purino.de/speisekarten/spezialmenues.html", function(data) {
-    var $menu = $(data).find(".mod_article.block");
-    $menu.find('img').detach();
-    return $menu;
-  });
-  proxy("#purino2", "https://www.purino.de/speisekarten/speisekarte/karlsruhe.html", function(data) {
-    var $menu = $(data).find(".mod_article.block");
-    $menu.find('img').detach();
-    return $menu;
-  });
-
   //Cafe Gold
-  proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
-    var url1 = $(data).find('a:contains(Wochenkarte)').attr('href');
-    var url2 = $(data).find('a:contains(Mittagskarte)').attr('href');
-    pdf("#cafegold2", url2 + '?date=' + (new Date()).getTime());
-    return '<img id="cafegold1-menu-img" src="' + url1 + '"/>';
-  });
-
-
-
 /*
   moment.locale('de');
   var week = moment(new Date()).week();

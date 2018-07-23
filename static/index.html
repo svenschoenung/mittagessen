@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/locale/de.js"></script>
 
-<script src="pdf.js"></script>
+<!--<script src="pdf.js"></script>-->
 <script src="mittagessen.js"></script>
 </head>
 <body>
@@ -40,12 +40,25 @@
 
 <main>
 <h1 id="schlachthof">Schlachthof</h1>
-<canvas id="schlachthof-menu"></canvas>
+<div id="schlachthof-menu"></div>
+<script>
+googlePdf("#schlachthof", "https://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf", {
+  width:1000,
+  height:600
+});
+</script>
 
 <h1 id="carlswirtshaus">Carl's Wirtshaus</h1>
-<div id="carlswirtshaus-menu">
-<canvas id="carlswirtshaus-pdf-menu"></canvas>
-</div>
+<div id="carlswirtshaus-menu"></div>
+<script>
+proxy("#carlswirtshaus", "http://www.carls-wirtshaus.de/getraenke-speisekarte/", function(data) {
+  var url = $(data).find("#mittagstischkarte div[data-link$='.pdf']").attr('data-link');
+  googlePdf("#carlswirtshaus", url, {
+    width:600,
+    height:850
+  });
+});
+</script>
 
 <h1 id="chiangmai">Chiang Mai</h1>
 <div id="chiangmai-menu">
@@ -53,15 +66,39 @@
 </div>
 
 <h1 id="purino">Purino</h1>
-<div id="purino1-menu">
+<div class="purino">
+<a href="https://www.purino.de/speisekarten/speisekarte/karlsruhe.html">Speisekarte</a>
+<div id="purino1-menu"></div>
+<a href="https://www.purino.de/speisekarten/spezialmenues.html">Spezialmenüs</a>
+<div id="purino2-menu"></div>
 </div>
-<div id="purino2-menu">
-</div>
+<script>
+proxy("#purino1", "https://www.purino.de/speisekarten/speisekarte/karlsruhe.html", function(data) {
+  var $menu = $(data).find(".mod_article.block");
+  $menu.find('img').detach();
+  return $menu;
+});
+proxy("#purino2", "https://www.purino.de/speisekarten/spezialmenues.html", function(data) {
+  var $menu = $(data).find(".mod_article.block");
+  $menu.find('img').detach();
+  return $menu;
+});
+</script>
 
 <h1 id="cafegold">Cafe Gold</h1>
-<div id="cafegold1-menu">
-</div>
-<canvas id="cafegold2-menu"></canvas>
+<div id="cafegold1-menu"></div>
+<div id="cafegold2-menu"></div>
+<script>
+proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
+  var url1 = $(data).find('a:contains(Wochenkarte)').attr('href');
+  var url2 = $(data).find('a:contains(Mittagskarte)').attr('href');
+  googlePdf("#cafegold2", url2, {
+    width:800,
+    height:1150
+  });
+  return '<img src="' + url1 + '"/>';
+});
+</script>
 
 </main>
 
