@@ -45,7 +45,7 @@
 <script>
 googlePdf("#schlachthof", "https://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf", {
   width:1000,
-  height:600
+  height:800
 });
 </script>
 
@@ -56,7 +56,7 @@ proxy("#carlswirtshaus", "http://www.carls-wirtshaus.de/getraenke-speisekarte/",
   var url = $(data).find("#mittagstischkarte div[data-link$='.pdf']").attr('data-link');
   googlePdf("#carlswirtshaus", url, {
     width:600,
-    height:850
+    height:900
   });
 });
 </script>

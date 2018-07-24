@@ -23,6 +23,13 @@ function pdf(htmlId, url) {
 function googlePdf(htmlId, url, options) {
     var googleUrl = 'https://docs.google.com/gview?url=' + encodeURIComponent(url) + '&embedded=true';
     var link = $('<a>Speisekarte</a>').attr('href', googleUrl).attr('target', '_blank');
+
+    var embed = $('<embed></embed>')
+      .attr('src', url)
+      .attr('width', options.width)
+      .attr('height', options.height)
+      .attr('type', 'application/pdf');
+
     var iframe = $('<iframe></iframe>')
       .attr('src', googleUrl)
       .attr('frameborder', '0')
@@ -30,7 +37,10 @@ function googlePdf(htmlId, url, options) {
       .css('margin', '0 auto')
       .css('width', options.width + 'px')
       .css('height', options.height + 'px');
-    $(htmlId + '-menu').append(link).append(iframe);
+
+    iframe.append(embed);
+
+    $(htmlId + '-menu').append(link).append(embed);
 }
 
 function facebook(htmlId, fbId, closed, menuAvailable) {
