@@ -106,10 +106,15 @@ proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
 <h1 id="oktave">Oktave</h1>
 <div id="oktave-menu"></div>
 <script>
-googlePdf("#oktave", "https://oktave-karlsruhe.de/wp-content/uploads/2017/11/Speisekarte_Oktave_klein.pdf", {
-  width:800,
-  height:1000
-});
+var weekday = moment().isoWeekday();
+if (weekday == 2 || weekday == 4) {
+  googlePdf("#oktave", "https://oktave-karlsruhe.de/wp-content/uploads/2017/11/Speisekarte_Oktave_klein.pdf", {
+    width:800,
+    height:1000
+  });
+} else {
+  document.writeln('<div>Nur dienstags und donnerstags geöffnet.</div>');
+}
 </script>
 
 <h1 id="anatolia">Anatolia</h1>
