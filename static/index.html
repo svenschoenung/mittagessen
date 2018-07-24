@@ -36,6 +36,7 @@
 <li><a href="#oktave">Oktave</a></li>
 <li><a href="#anatolia">Anatolia</a></li>
 <li><a href="#mahlzeit">Mahlzeit</a></li>
+<li><a href="#oxford">Oxford</a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
@@ -143,6 +144,16 @@ proxy("#mahlzeit", "http://mahlzeit-ka.de/speisekarte/", function(data) {
   menu.find('img').each(function(i, el) {
     $(el).attr('src', 'http://mahlzeit-ka.de' + $(el).attr('src')); 
   });
+  return menu; 
+});
+</script>
+
+<h1 id="oxford">Oxford</h1>
+<a href="https://channel.gastro-stratege.ch/web/mittagstisch.php?l=338bd8841d967da9858f2518dead2242">Wochenkarte</a>
+<div id="oxford-menu"></div>
+<script>
+proxy("#oxford", "https://channel.gastro-stratege.ch/web/mittagstisch.php?l=338bd8841d967da9858f2518dead2242", function(data) {
+  var menu = $(data).find('.panel-group');
   return menu; 
 });
 </script>
