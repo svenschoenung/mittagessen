@@ -34,18 +34,15 @@ embed {
 	max-width:800px;
 }
 
-#mtv-menu, #purino1-menu, #purino2-menu {
-	margin: 0 auto;
-	width: 1000px;
-	background: #eee;
-}
-
 .purino a {
 	margin-top:20px;
 	display:inline-block;
 }
 
-#purino1-menu, #purino2-menu { 
+#purino1-menu, #purino2-menu, #anatolia-menu { 
+	margin: 0 auto;
+	width: 1000px;
 	max-height:600px;
 	overflow:auto;
+	background: #eee;
 }

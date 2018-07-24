@@ -34,6 +34,7 @@
 <li><a href="#purino">Purino</a></li>
 <li><a href="#cafegold">Cafe Gold</a></li>
 <li><a href="#oktave">Oktave</a></li>
+<li><a href="#anatolia">Anatolia</a></li>
 <li><a href="#mahlzeit">Mahlzeit</a></li>
 </ul>
 </div><!--/.nav-collapse -->
@@ -108,6 +109,23 @@ proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
 googlePdf("#oktave", "https://oktave-karlsruhe.de/wp-content/uploads/2017/11/Speisekarte_Oktave_klein.pdf", {
   width:800,
   height:1000
+});
+</script>
+
+<h1 id="anatolia">Anatolia</h1>
+<a href="https://www.anatolia-pizza-kebaphaus-karlsruhe.de/">Speisekarte</a>
+<div id="anatolia-menu"></div>
+<script>
+proxy("#anatolia", "https://www.anatolia-pizza-kebaphaus-karlsruhe.de/", function(data) {
+  var menu = $(data).find('.menuproducts');
+  menu.find('a').each(function(i, el) {
+    $(el).replaceWith($('<div></div>').append($(el).children()));
+  });
+  menu.find('li').each(function(i, el) {
+    $(el).replaceWith($('<div></div>').append($(el).children()));
+  });
+  menu.find('script').detach();
+  return menu;
 });
 </script>
 
