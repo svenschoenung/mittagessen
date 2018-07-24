@@ -34,6 +34,7 @@
 <li><a href="#purino">Purino</a></li>
 <li><a href="#cafegold">Cafe Gold</a></li>
 <li><a href="#oktave">Oktave</a></li>
+<li><a href="#mahlzeit">Mahlzeit</a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
@@ -107,6 +108,19 @@ proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
 googlePdf("#oktave", "https://oktave-karlsruhe.de/wp-content/uploads/2017/11/Speisekarte_Oktave_klein.pdf", {
   width:800,
   height:1000
+});
+</script>
+
+<h1 id="mahlzeit">Mahlzeit</h1>
+<a href="http://mahlzeit-ka.de/speisekarte/">Speisekarte</a>
+<div id="mahlzeit-menu"></div>
+<script>
+proxy("#mahlzeit", "http://mahlzeit-ka.de/speisekarte/", function(data) {
+  var menu = $(data).find('#burger,#pizza,#chicken');
+  menu.find('img').each(function(i, el) {
+    $(el).attr('src', 'http://mahlzeit-ka.de' + $(el).attr('src')); 
+  });
+  return menu; 
 });
 </script>
 
