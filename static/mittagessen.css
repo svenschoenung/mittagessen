@@ -52,3 +52,7 @@ embed {
 	overflow:auto;
 	background: #eee;
 }
+
+.container {
+	width: 100% !important;
+}
