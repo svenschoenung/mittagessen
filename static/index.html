@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="mittagessen.css"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -43,7 +44,13 @@
 </nav>
 
 <main>
-<h1 id="schlachthof">Schlachthof</h1>
+
+<h1 id="schlachthof">
+Schlachthof
+<a href="https://imschlachthof.de"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/rBixAWxKpTK2" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
 <div id="schlachthof-menu"></div>
 <script>
 googlePdf("#schlachthof", "https://www.imschlachthof.de/images/stories/sh_mittagstisch.pdf", {
@@ -52,7 +59,12 @@ googlePdf("#schlachthof", "https://www.imschlachthof.de/images/stories/sh_mittag
 });
 </script>
 
-<h1 id="carlswirtshaus">Carl's Wirtshaus</h1>
+<h1 id="carlswirtshaus">
+Carl's Wirtshaus
+<a href="http://www.carls-wirtshaus.de/"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/5BRzbffXDgs" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
 <div id="carlswirtshaus-menu"></div>
 <script>
 proxy("#carlswirtshaus", "http://www.carls-wirtshaus.de/getraenke-speisekarte/", function(data) {
@@ -64,16 +76,38 @@ proxy("#carlswirtshaus", "http://www.carls-wirtshaus.de/getraenke-speisekarte/",
 });
 </script>
 
-<h1 id="chiangmai">Chiang Mai</h1>
+<h1 id="tanteedith">
+Tante Edith
+<a href="https://goo.gl/maps/nCBsmp53J2M2" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
+<div id="tanteedit-menu">
+<script>
+var weekNum = moment().isoWeek();
+document.println('<img src="tanteedith_kw' + weekNum + '.jpg"/>');
+</script>
+</div>
+
+<h1 id="chiangmai">
+Chiang Mai
+<a href="https://goo.gl/maps/6F2ccz9WkSR2" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
 <div id="chiangmai-menu">
 <a href="https://www.speisekarte.de/karlsruhe-baden/restaurant/chiang_mai_thai_restaurant/speisekarte">Speisekarte</a>
 </div>
 
-<h1 id="purino">Purino</h1>
+<h1 id="purino">
+Purino
+<a href="https://www.purino.de/restaurants/karlsruhe.html"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/Zyf4RN9ynd12" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
 <div class="purino">
 <a href="https://www.purino.de/speisekarten/speisekarte/karlsruhe.html">Speisekarte</a>
 <div id="purino1-menu"></div>
 <a href="https://www.purino.de/speisekarten/spezialmenues.html">Spezialmenüs</a>
+
 <div id="purino2-menu"></div>
 </div>
 <script>
@@ -89,7 +123,12 @@ proxy("#purino2", "https://www.purino.de/speisekarten/spezialmenues.html", funct
 });
 </script>
 
-<h1 id="cafegold">Cafe Gold</h1>
+<h1 id="cafegold">
+Cafe Gold
+<a href="https://www.gold-ka.de/"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/RgyRbm8ZYMs" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
 <div id="cafegold1-menu"></div>
 <div id="cafegold2-menu"></div>
 <script>
@@ -104,7 +143,11 @@ proxy("#cafegold1", "https://www.gold-ka.de/home/menu/essen/", function(data) {
 });
 </script>
 
-<h1 id="oktave">Oktave</h1>
+<h1 id="oktave">
+Oktave
+<a href="https://oktave-karlsruhe.de/startseite/"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/eLYdG433eyF2" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
 <div id="oktave-menu"></div>
 <script>
 var weekday = moment().isoWeekday();
@@ -118,7 +161,12 @@ if (weekday == 2 || weekday == 4) {
 }
 </script>
 
-<h1 id="anatolia">Anatolia</h1>
+<h1 id="anatolia">
+Anatolia
+<a href="https://www.anatolia-pizza-kebaphaus-karlsruhe.de/"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/hao6HRqHt832" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+
 <a href="https://www.anatolia-pizza-kebaphaus-karlsruhe.de/">Speisekarte</a>
 <div id="anatolia-menu"></div>
 <script>
@@ -135,7 +183,11 @@ proxy("#anatolia", "https://www.anatolia-pizza-kebaphaus-karlsruhe.de/", functio
 });
 </script>
 
-<h1 id="mahlzeit">Mahlzeit</h1>
+<h1 id="mahlzeit">
+Mahlzeit
+<a href="http://mahlzeit-ka.de/" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/HvGeRW3uihk" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
 <a href="http://mahlzeit-ka.de/speisekarte/">Speisekarte</a>
 <div id="mahlzeit-menu"></div>
 <script>
@@ -143,14 +195,21 @@ proxy("#mahlzeit", "http://mahlzeit-ka.de/speisekarte/", function(data) {
   var menu = $(data).find('#burger,#pizza,#chicken');
   menu.find('img').each(function(i, el) {
     $(el).attr('src', 'http://mahlzeit-ka.de' + $(el).attr('src')); 
+    $(el).css('width', '800px');
   });
   return menu; 
 });
 </script>
 
-<h1 id="oxford">Oxford</h1>
-<a href="https://channel.gastro-stratege.ch/web/mittagstisch.php?l=338bd8841d967da9858f2518dead2242">Wochenkarte</a>
-<div id="oxford-menu"></div>
+<h1 id="oxford">
+Oxford
+<a href="http://www.oxford-cafe.de/" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/uHPKNNjgspk" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+<div id="oxford-menu">
+<div><a href="https://channel.gastro-stratege.ch/web/karten.php?l=338bd8841d967da9858f2518dead2242&cardid=1">Speisekarte</a></div>
+<div><a href="https://channel.gastro-stratege.ch/web/mittagstisch.php?l=338bd8841d967da9858f2518dead2242">Wochenkarte</a></div>
+</div>
 <script>
 proxy("#oxford", "https://channel.gastro-stratege.ch/web/mittagstisch.php?l=338bd8841d967da9858f2518dead2242", function(data) {
   var menu = $(data).find('.panel-group');

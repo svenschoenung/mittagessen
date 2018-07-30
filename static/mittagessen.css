@@ -23,6 +23,12 @@ h1 {
 	border-top:1px solid gray;
 }
 
+h1 a:link,
+h1 a:hover,
+h1 a:active {
+	text-decoration:none;
+}
+
 embed {
 	display:block;
 	margin:0 auto;
