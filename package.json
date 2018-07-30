@@ -3,6 +3,9 @@
   "description": "One page display of lunch options",
   "version": "0.0.1",
   "author": "Sven Schoenung",
+  "scripts": {
+    "start": "node app.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/svenschoenung/mittagessen.git"
