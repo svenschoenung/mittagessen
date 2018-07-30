@@ -38,6 +38,7 @@
 <li><a href="#anatolia">Anatolia</a></li>
 <li><a href="#mahlzeit">Mahlzeit</a></li>
 <li><a href="#oxford">Oxford</a></li>
+<li><a href="#rintheimerstuben">Rintheimer Stuben</a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
@@ -216,6 +217,24 @@ proxy("#oxford", "https://channel.gastro-stratege.ch/web/mittagstisch.php?l=338b
   return menu; 
 });
 </script>
+
+<h1 id="rintheimerstuben">
+Rintheimer Stuben
+<a href="https://www.tsv-rintheim.de/rintheimer-stuben/speisekarte" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="https://goo.gl/maps/aaAxvn8UE122" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+</h1>
+<div id="rintheimerstuben-menu">
+<script>
+var week = moment().isoWeek();
+var pdf = "https://www.tsv-rintheim.de/images/Wochenkarten/Wochenkarte_KW" + (week + 1) + ".pdf";
+googlePdf("#rintheimerstuben", pdf, {
+  width:600,
+  height:900
+});
+</script>
+</div>
+
+
 
 </main>
 
