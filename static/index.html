@@ -41,6 +41,7 @@
 <li><a href="#oxford">Oxford</a></li>
 <li><a href="#pizzahaus">Pizzahaus</a></li>
 <li><a href="#rintheimerstuben">Rintheimer Stuben</a></li>
+<li><a href="#mtv">MTV</a></li>
 </ul>
 </div><!--/.nav-collapse -->
 </div>
@@ -245,7 +246,17 @@ googlePdf("#rintheimerstuben", pdf, {
 </script>
 </div>
 
+<h1 id="mtv">MTV</h1>
+<div id="mtv-menu"></div>
 
+<script>
+proxy("#mtv", "http://www.xn--gaststtte-mtv-karlsruhe-07b.de/html/speisekarte.html", function(data) {
+  var $data = $(data).find("#LayoutBereich10LYR");
+  $data.find('table').css('width', '100%')
+  return $data[0].outerHTML;
+});
+
+</script>
 
 </main>
 
