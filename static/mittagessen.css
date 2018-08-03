@@ -56,3 +56,7 @@ embed {
 .container {
 	width: 100% !important;
 }
+
+#fettschmelze-menu .menu-item-title {
+	font-weight:bold;
+}
