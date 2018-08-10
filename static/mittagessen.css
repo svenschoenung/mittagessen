@@ -57,6 +57,10 @@ embed {
 	width: 100% !important;
 }
 
+#mtv-menu * {
+	color:black !important;
+}
+
 #fettschmelze-menu .menu-item-title {
 	font-weight:bold;
 }

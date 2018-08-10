@@ -249,17 +249,20 @@ googlePdf("#rintheimerstuben", pdf, {
 
 <h1 id="mtv">
 MTV
-<a href="http://www.xn--gaststtte-mtv-karlsruhe-07b.de" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+<a href="http://mtv-gaststaette.de/" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
 <a href="https://goo.gl/maps/958Kez1x3sF2" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
 </h1>
 
-<a href="http://www.xn--gaststtte-mtv-karlsruhe-07b.de/html/speisekarte.html">Speisekarte</a>
+<a href="http://mtv-gaststaette.de/?page_id=755">Mittagstisch</a>
 <div id="mtv-menu"></div>
 <script>
-proxy("#mtv", "http://www.xn--gaststtte-mtv-karlsruhe-07b.de/html/speisekarte.html", function(data) {
-  var $data = $(data).find("#LayoutBereich10LYR");
-  $data.find('table').css('width', '100%')
-  return $data[0].outerHTML;
+proxy("#mtv", "http://mtv-gaststaette.de/?page_id=755", function(data) {
+  var $data = $(data).find(".vc_row.vc_row-fluid");
+  var html = "";
+  return $data.each(function(i, e) {
+    html += e.outerHTML;
+  });
+  return html;
 });
 </script>
 
